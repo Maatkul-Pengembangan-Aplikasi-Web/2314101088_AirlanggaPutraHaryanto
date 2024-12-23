@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,6 +26,15 @@ Route::prefix('/prodi')->group(function () {
     Route::get('/edit/{id}', [ProdiController::class, 'edit'])->name('prodi.edit');
     Route::put('/edit/{id}', [ProdiController::class, 'update'])->name('prodi.update');
     Route::delete('/delete/{id}', [ProdiController::class, 'delete'])->name('prodi.delete');
+});
+
+Route::prefix('/mahasiswa')->group(function () {
+    Route::get('/', [MahasiswaController::class, 'index'])->name('mahasiswa');
+    Route::get('/create', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
+    Route::post('/save', [MahasiswaController::class, 'save'])->name('mahasiswa.save');
+    Route::get('/edit/{id}', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
+    Route::put('/edit/{id}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
+    Route::delete('/delete/{id}', [MahasiswaController::class, 'delete'])->name('mahasiswa.delete');
 });
 
 
